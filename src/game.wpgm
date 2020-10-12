@@ -10,8 +10,24 @@ program farmville {
 	game.ground("ground.png")
 
 	//  VISUALES
+ 	game.addVisual(aspersor)
+ 	
+ 	mercados.agregar(new Mercado(position = game.at(3,3), oro = 1500) )
+ 	mercados.agregar(new Mercado(position = game.at(6,9), oro = 1500) )
  	game.addVisualCharacter(hector)
- 	game.addVisualIn(new Maiz(), game.at(1, 1))
+ 	
+ 	keyboard.m().onPressDo({hector.sembrar(new Maiz())})
+ 	keyboard.t().onPressDo({hector.sembrar(new Trigo())})
+ 	keyboard.o().onPressDo({hector.sembrar(new Tomaco())})
+ 	
+ 	keyboard.r().onPressDo({hector.regar()})
+ 	keyboard.c().onPressDo({hector.cosechar()})
+ 	keyboard.v().onPressDo({hector.vender()})
+ 	keyboard.space().onPressDo({hector.decirPosesiones()})
+ 	
+ 	
+ 	
+ 	game.onTick(5000, "aspersor", {aspersor.regar()})
  	
  	//  COMIENZA
 	game.start()
